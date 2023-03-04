@@ -1,14 +1,30 @@
-pipeline {
-  agent any
-  stages {
-    stage('prepare') {
-      steps {
-        sh 'yarn install'
-      }
-    }
+pipline {
+    agent any
 
-  }
-  environment {
-    CC = '\'clang\''
-  }
+    stages {
+        stage('Prepare') {
+            steps {
+                sh 'yarn install'
+                sh 'yarn run build'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Buiding'
+            }
+        }
+    
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Depoying'
+            }
+        }
+    }
 }
